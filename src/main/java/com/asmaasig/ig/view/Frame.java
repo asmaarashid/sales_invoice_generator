@@ -3,7 +3,10 @@ package com.asmaasig.ig.view;
 
 import com.asmaasig.ig.control.Controller;
 import com.asmaasig.ig.model.Header;
+import com.asmaasig.ig.model.HeaderTableModel;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 
 public class Frame extends javax.swing.JFrame {
 
@@ -23,6 +26,7 @@ public class Frame extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         invoiceTable = new javax.swing.JTable();
+        invoiceTable.getSelectionModel().addListSelectionListener(controller);
         jScrollPane2 = new javax.swing.JScrollPane();
         lineTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -251,6 +255,7 @@ public class Frame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private ArrayList<Header> invoices;
     private Controller controller = new Controller(this);
+    private HeaderTableModel invoicesTableModel;
 
     public ArrayList<Header> getInvoices() {
         return invoices;
@@ -259,6 +264,42 @@ public class Frame extends javax.swing.JFrame {
     public void setInvoices(ArrayList<Header> invoices) {
         this.invoices = invoices;
     }
-    
+
+    public HeaderTableModel getInvoicesTableModel() {
+        return invoicesTableModel;
+    }
+
+    public void setInvoicesTableModel(HeaderTableModel invoicesTableModel) {
+        this.invoicesTableModel = invoicesTableModel;
+    }
+
+    public JLabel getCustomerLabel() {
+        return customerLabel;
+    }
+
+    public JLabel getInvDateLabel() {
+        return invDateLabel;
+    }
+
+    public JLabel getInvNumLabel() {
+        return invNumLabel;
+    }
+
+    public JLabel getInvTotalLabel() {
+        return invTotalLabel;
+    }
+
+    public JTable getInvoiceTable() {
+        return invoiceTable;
+    }
+
+    public JTable getLineTable() {
+        return lineTable;
+    }
+
+    public Controller getController() {
+        return controller;
+    }
+     
     
 }

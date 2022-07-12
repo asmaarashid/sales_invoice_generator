@@ -4,23 +4,23 @@ package com.asmaasig.ig.model;
 public class Line {
     
     
-    private int num;
     private String itemName;
     private double itemPrice;
     private int amount;
     private Header header;
+    
+    
+    
     public Line() {
     }
 
-    public Line(int num, String item, double price, int amount) {
-        this.num = num;
+    public Line(String item, double price, int amount) {
         this.itemName = item;
         this.itemPrice = price;
         this.amount = amount;
     }
 
-    public Line(int num, String item, double price, int amount, Header header) {
-        this.num = num;
+    public Line(String item, double price, int amount, Header header) {
         this.itemName = item;
         this.itemPrice = price;
         this.amount = amount;
@@ -40,13 +40,6 @@ public class Line {
         this.amount = amount;
     }
 
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
 
     public String getItem() {
         return itemName;
@@ -64,9 +57,13 @@ public class Line {
         this.itemPrice = price;
     }
 
+    public Header getHeader() {
+        return header;
+    }
+    
     @Override
     public String toString() {
-        return "Line{" + "num=" + num + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", amount=" + amount + '}';
+        return "Line{" + "num=" + header.getNum() + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", amount=" + amount + '}';
     }
 
     

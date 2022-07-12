@@ -2,7 +2,9 @@
 package com.asmaasig.ig.control;
 
 import com.asmaasig.ig.model.Header;
+import com.asmaasig.ig.model.HeaderTableModel;
 import com.asmaasig.ig.model.Line;
+import com.asmaasig.ig.model.LineTableModel;
 import com.asmaasig.ig.view.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,8 +16,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener, ListSelectionListener{
     
     private Frame frame;
     public Controller(Frame frame){
@@ -100,13 +104,17 @@ public class Controller implements ActionListener{
                                 break;
                             }
                         }
-                        Line line = new Line(invNum, itemName, itemPrice, amount, inv);
+                        Line line = new Line(itemName, itemPrice, amount, inv);
                         inv.getLines().add(line);
                     }
                     System.out.println("check point 2222222");
                 }
                 
                frame.setInvoices(invoiceArray);
+               HeaderTableModel invoicesTableModel = new HeaderTableModel(invoiceArray);
+               frame.setInvoicesTableModel(invoicesTableModel);
+               frame.getInvoiceTable().setModel(invoicesTableModel);
+               frame.getInvoicesTableModel().fireTableDataChanged();
             }
         }catch(IOException ex){
             ex.printStackTrace();
@@ -127,6 +135,22 @@ public class Controller implements ActionListener{
     }
 
     private void deleteItem() {
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        int selectedInvoiceIndex = frame.getInvoiceTable().getSelectedRow();
+        System.out.println("you've selected row: " + selectedInvoiceIndex);
+        Header choosenInvoice = frame.getInvoices().get(selectedInvoiceIndex);  
+        
+        frame.getInvNumLabel().setText(""+choosenInvoice.getNum());
+        frame.getInvDateLabel().setText(choosenInvoice.getDate());
+        frame.getCustomerLabel().setText(choosenInvoice.getCustomer());
+        frame.getInvTotalLabel().setText(""+choosenInvoice.getInvTotalPrice());
+        
+        LineTableModel lineTableModel = new LineTableModel(choosenInvoice.getLines());
+        frame.getLineTable().setModel(lineTableModel);
+        lineTableModel.fireTableDataChanged();
     }
     
 }
