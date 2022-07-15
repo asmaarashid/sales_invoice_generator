@@ -48,5 +48,10 @@ public class LineTableModel extends AbstractTableModel{
         
         }
      }
+
+    public ArrayList<Line> getInvRows() {
+        return invRows;
+    }
+
     
 }

@@ -65,6 +65,11 @@ public class Header {
         return total;
     }
     
+    
+    public String fitchInvAsCSVformat(){
+        return num + "," + date + "," + customer;
+    }
+    
     @Override
     public String toString() {
         return "Header{" + "num=" + num + ", date=" + date + ", customer=" + customer + '}';

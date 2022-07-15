@@ -27,6 +27,7 @@ public class Frame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         invoiceTable = new javax.swing.JTable();
         invoiceTable.getSelectionModel().addListSelectionListener(controller);
+        //invoiceTable.setModel(getInvoicesTableModel());
         jScrollPane2 = new javax.swing.JScrollPane();
         lineTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -256,7 +257,19 @@ public class Frame extends javax.swing.JFrame {
     private ArrayList<Header> invoices;
     private Controller controller = new Controller(this);
     private HeaderTableModel invoicesTableModel;
-
+    
+    
+    public int whatsNextInvoiceIndex(){
+        int nextInvIndex = 0;
+        for(Header invoice : invoices){
+            if (invoice.getNum()> nextInvIndex){
+                nextInvIndex = invoice.getNum();
+            }
+        
+        }
+        return nextInvIndex + 1;
+    }
+    
     public ArrayList<Header> getInvoices() {
         return invoices;
     }
@@ -266,6 +279,9 @@ public class Frame extends javax.swing.JFrame {
     }
 
     public HeaderTableModel getInvoicesTableModel() {
+        /*if(invoicesTableModel == null){
+            invoicesTableModel = new HeaderTableModel(invoices);
+        }*/
         return invoicesTableModel;
     }
 

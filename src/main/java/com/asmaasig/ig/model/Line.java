@@ -61,6 +61,11 @@ public class Line {
         return header;
     }
     
+    
+    public String fitchLineAsCSVformat(){
+        return header.getNum() + "," + itemName + "," + itemPrice + "," + amount;
+    }
+    
     @Override
     public String toString() {
         return "Line{" + "num=" + header.getNum() + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", amount=" + amount + '}';
