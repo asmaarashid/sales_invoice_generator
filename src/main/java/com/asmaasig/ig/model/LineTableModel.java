@@ -15,9 +15,6 @@ public class LineTableModel extends AbstractTableModel{
         this.invRows = invRows;
     }
     
-    
-    
-
     @Override
     public int getRowCount() {
         return invRows.size();
@@ -32,7 +29,6 @@ public class LineTableModel extends AbstractTableModel{
     public String getColumnName(int lineColumn) {
         return lineTableColumnsNames[lineColumn];
     }
-    
     
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -51,7 +47,5 @@ public class LineTableModel extends AbstractTableModel{
 
     public ArrayList<Line> getInvRows() {
         return invRows;
-    }
-
-    
+    }   
 }

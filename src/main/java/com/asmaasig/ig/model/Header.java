@@ -5,23 +5,24 @@ import java.util.ArrayList;
 
 public class Header {
     
+    // invoices table variables declaration
     private int num;
     private String date;
     private String customer;
     private ArrayList<Line> lines;
     
-    /* no argument constructor */
+    // no argument constructor
     public Header() {
     }
     
-    /* constructor with all variables as arguments */
+    // constructor with all variables as arguments
     public Header(int num, String date, String customer) {
         this.num = num;
         this.date = date;
         this.customer = customer;
     }
     
-    /* customer name getter and setter */
+    // customer name getter and setter
     public String getCustomer() {
         return customer;
     }
@@ -31,7 +32,7 @@ public class Header {
     }
     
     
-    /* invoice number getter and setter */
+    // invoice number getter and setter
     public int getNum() {
         return num;
     }
@@ -41,7 +42,7 @@ public class Header {
     }
     
     
-    /* invoice date getter and setter */
+    // invoice date getter and setter
     public String getDate() {
         return date;
     }
@@ -49,7 +50,8 @@ public class Header {
     public void setDate(String date) {
         this.date = date;
     }
-
+    
+    // create arraylist of line for each invoice
     public ArrayList<Line> getLines() {
         if(lines == null){
             lines = new ArrayList<>();
@@ -57,6 +59,7 @@ public class Header {
         return lines;
     }
     
+    // get the total price of an invoice from all lines
     public double getInvTotalPrice(){
         double total = 0.0;
         for(Line line : getLines()){
@@ -65,7 +68,7 @@ public class Header {
         return total;
     }
     
-    
+    // converting the invoices list into comma separated value format
     public String fitchInvAsCSVformat(){
         return num + "," + date + "," + customer;
     }
@@ -74,8 +77,5 @@ public class Header {
     public String toString() {
         return "Header{" + "num=" + num + ", date=" + date + ", customer=" + customer + '}';
     }
-    
-    
-    
-    
+ 
 }

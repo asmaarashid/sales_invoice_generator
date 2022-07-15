@@ -77,12 +77,16 @@ public class Frame extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(lineTable);
 
+        jLabel1.setForeground(new java.awt.Color(102, 0, 153));
         jLabel1.setText("Invoice Number");
 
+        jLabel2.setForeground(new java.awt.Color(102, 0, 153));
         jLabel2.setText("Invoice Date");
 
+        jLabel3.setForeground(new java.awt.Color(102, 0, 153));
         jLabel3.setText("Customer Name");
 
+        jLabel4.setForeground(new java.awt.Color(102, 0, 153));
         jLabel4.setText("Invoice Total");
 
         invNumLabel.setText("jLabel5");
@@ -93,12 +97,16 @@ public class Frame extends javax.swing.JFrame {
 
         invTotalLabel.setText("jLabel8");
 
+        createInvButton.setBackground(new java.awt.Color(204, 204, 255));
         createInvButton.setText("Create Invoice");
 
+        deleteInvButton.setBackground(new java.awt.Color(204, 204, 255));
         deleteInvButton.setText("Delete Invoice");
 
+        addItemButton.setBackground(new java.awt.Color(204, 204, 255));
         addItemButton.setText("Add New Item");
 
+        deleteItemButton.setBackground(new java.awt.Color(204, 204, 255));
         deleteItemButton.setText("Delete Item");
         deleteItemButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,22 +262,18 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JMenuItem loadFileMenuItem;
     private javax.swing.JMenuItem saveFileMenuItem;
     // End of variables declaration//GEN-END:variables
+    
+    //objects declaration
     private ArrayList<Header> invoices;
     private Controller controller = new Controller(this);
     private HeaderTableModel invoicesTableModel;
     
-    
-    public int whatsNextInvoiceIndex(){
-        int nextInvIndex = 0;
-        for(Header invoice : invoices){
-            if (invoice.getNum()> nextInvIndex){
-                nextInvIndex = invoice.getNum();
-            }
-        
-        }
-        return nextInvIndex + 1;
+    // controller getter
+    public Controller getController() {
+        return controller;
     }
     
+    // invoices getters and setters
     public ArrayList<Header> getInvoices() {
         return invoices;
     }
@@ -279,16 +283,14 @@ public class Frame extends javax.swing.JFrame {
     }
 
     public HeaderTableModel getInvoicesTableModel() {
-        /*if(invoicesTableModel == null){
-            invoicesTableModel = new HeaderTableModel(invoices);
-        }*/
         return invoicesTableModel;
     }
 
     public void setInvoicesTableModel(HeaderTableModel invoicesTableModel) {
         this.invoicesTableModel = invoicesTableModel;
     }
-
+    
+    //labels getters
     public JLabel getCustomerLabel() {
         return customerLabel;
     }
@@ -304,17 +306,27 @@ public class Frame extends javax.swing.JFrame {
     public JLabel getInvTotalLabel() {
         return invTotalLabel;
     }
-
+    
+    // tables getters
     public JTable getInvoiceTable() {
         return invoiceTable;
     }
-
+    
     public JTable getLineTable() {
         return lineTable;
     }
 
-    public Controller getController() {
-        return controller;
+    // method to determining the next invoice number to use
+    public int whatsNextInvoiceIndex(){
+        int nextInvIndex = 0;
+        for(Header invoice : invoices){
+            if (invoice.getNum()> nextInvIndex){
+                nextInvIndex = invoice.getNum();
+            }
+        
+        }
+        //adding 1 to the last invoice number
+        return nextInvIndex + 1;
     }
      
     

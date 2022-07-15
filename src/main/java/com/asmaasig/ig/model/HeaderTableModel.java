@@ -7,7 +7,6 @@ import javax.swing.table.AbstractTableModel;
 
 public class HeaderTableModel extends AbstractTableModel{
     
-    
     private ArrayList<Header> invoices;
     private String[] headerTableColumnsNames = {"No." , "Date" , "Customer" , "Total"};
 
@@ -17,8 +16,7 @@ public class HeaderTableModel extends AbstractTableModel{
     
     @Override
     public int getRowCount() {
-        return invoices.size();
-        
+        return invoices.size();  
     }
 
     @Override
